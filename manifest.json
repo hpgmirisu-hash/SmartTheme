@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "SmartTheme - 智慧護眼網頁變色器",
+  "version": "0.2.6",
+  "description": "純色護眼主題、熱門網站文字修補、Element Picker，並以 0ms 安全注入避免白光閃爍。",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "SmartTheme 護眼主題",
+    "default_popup": "popup/popup.html"
+  },
+  "options_page": "options/options.html",
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "utils/url-matcher.js",
+        "utils/storage.js",
+        "content-scripts/site-fixes.js",
+        "content-scripts/content.js",
+        "content-scripts/element-picker.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

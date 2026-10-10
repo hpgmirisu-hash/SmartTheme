@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartTheme</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <h1>SmartTheme</h1>
+          <p class="subtitle">v0.2.6 · 純色護眼</p>
+        </div>
+        <label class="switch" title="全域總開關">
+          <input id="enable-toggle" type="checkbox" checked />
+          <span class="slider"></span>
+          <span class="switch-label">啟用</span>
+        </label>
+      </header>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>黑白名單模式</h2>
+        </div>
+        <div class="segment" role="tablist">
+          <button id="mode-whitelist" class="segment-btn is-active" type="button">白名單</button>
+          <button id="mode-blacklist" class="segment-btn" type="button">黑名單</button>
+        </div>
+        <p class="hint" id="mode-hint">只對白名單網站套用主題。</p>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>當前網站</h2>
+        </div>
+        <p class="domain-line">
+          <strong id="current-domain">讀取中…</strong>
+        </p>
+        <label class="switch scope-switch">
+          <input id="site-toggle" type="checkbox" />
+          <span class="slider"></span>
+          <span class="switch-label" id="site-toggle-label">加入白名單並套用</span>
+        </label>
+      </section>
+
+      <section class="card">
+        <label class="switch scope-switch">
+          <input id="invert-toggle" type="checkbox" />
+          <span class="slider"></span>
+          <span class="switch-label">方案 C：反轉文字黑／白</span>
+        </label>
+        <p class="hint">YIQ 自動配色不對時，可一鍵對調文字顏色。</p>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>區塊補丁</h2>
+        </div>
+        <button id="element-picker-btn" class="picker-btn" type="button">🎯 點選區塊變色</button>
+        <p class="hint">點擊後請到網頁懸停並點選區塊；Esc 可取消。不會跟著超連結跳轉。</p>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>預設護眼主題</h2>
+        </div>
+        <div class="preset-grid" id="preset-grid"></div>
+      </section>
+
+      <section class="card">
+        <button class="disclosure" id="custom-toggle" type="button" aria-expanded="false">
+          <span>自訂純色</span>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="disclosure-panel" id="custom-panel" hidden>
+          <label class="field">
+            <span>Color Picker</span>
+            <input id="color-picker" type="color" value="#CCE8CF" />
+          </label>
+          <label class="field">
+            <span>Hex</span>
+            <input id="hex-input" type="text" maxlength="7" value="#CCE8CF" />
+          </label>
+          <button id="apply-solid" class="primary" type="button">套用純色</button>
+        </div>
+      </section>
+
+      <button id="open-options" class="ghost" type="button">開啟名單管理與備份</button>
+      <p class="status" id="status" aria-live="polite"></p>
+    </div>
+
+    <script src="../utils/url-matcher.js"></script>
+    <script src="../utils/storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

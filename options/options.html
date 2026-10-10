@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartTheme 名單管理</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">SmartTheme v0.2.6</p>
+          <h1>黑白名單與備份</h1>
+          <p class="lede">搜尋、批次編輯網域，並以 JSON 匯出／匯入完整設定。</p>
+        </div>
+        <div class="hero-actions">
+          <button id="export-json" class="primary" type="button">匯出 JSON</button>
+          <label class="secondary file-btn">
+            匯入 JSON
+            <input id="import-json" type="file" accept="application/json,.json" hidden />
+          </label>
+        </div>
+      </header>
+
+      <section class="toolbar card">
+        <label class="search">
+          <span>搜尋網域</span>
+          <input id="search-input" type="search" placeholder="例如 youtube.com" />
+        </label>
+        <p class="status" id="status" aria-live="polite"></p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>白名單</h2>
+          <p class="hint">白名單模式下，只有這些網站會套用護眼色。</p>
+          <form id="whitelist-form" class="add-row">
+            <input id="whitelist-input" type="text" placeholder="新增網域，如 gamer.com.tw" />
+            <button type="submit">加入</button>
+          </form>
+          <ul id="whitelist-list" class="domain-list"></ul>
+        </article>
+
+        <article class="card">
+          <h2>黑名單</h2>
+          <p class="hint">黑名單模式下，這些網站不會套用護眼色。</p>
+          <form id="blacklist-form" class="add-row">
+            <input id="blacklist-input" type="text" placeholder="新增網域，如 example.com" />
+            <button type="submit">加入</button>
+          </form>
+          <ul id="blacklist-list" class="domain-list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="../utils/url-matcher.js"></script>
+    <script src="../utils/storage.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
